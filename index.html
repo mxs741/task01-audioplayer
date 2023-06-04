@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css"></link>
+  <title>Document</title>
+</head>
+<body class="root">
+  <div class="blur">
+      <h1 class="title">Weather sounds</h1>
+      <div class="container">
+        <button class="btn play-summer" data-sound="summer">
+          <img src="./icons/summer.svg" width="70px" alt="">
+        </button>
+        <button class="btn play-rain" data-sound="rain">
+          <img src="./icons/rain.svg" width="70px" alt="">
+        </button>
+        <button class="btn play-winter" data-sound="winter">
+          <img src="./icons/winter.svg" width="70px" alt="">
+        </button>
+      </div>
+      <input class="volume" type="range" min="0" max="1" step="0.01" value="0.5">
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

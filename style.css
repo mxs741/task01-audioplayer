@@ -1,0 +1,56 @@
+.root {
+  margin: 0;
+  background-image: url('./img/summer-bg.jpg');
+  background-position: top right -500px;
+  background-size: 150%;
+  background-repeat: no-repeat;
+  transition: background-image .5s ease;
+}
+
+.blur {
+  height: 100vh;
+  backdrop-filter: blur(5px);
+}
+
+.title {
+  font-size: 100px;
+  margin: 0;
+  text-align: center;
+  color: coral;
+  font-family: sans-serif;
+}
+
+.container {
+  width: max-content;
+  display: flex;
+  margin: 20px auto;
+  gap: 20px;
+}
+
+.btn {
+  width: 200px;
+  height: 200px;
+  border-radius: 15%;
+  border-color: azure;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.play-summer {
+  background-image: url('./img/summer-bg.jpg');
+}
+
+.play-winter {
+  background-image: url('./img/winter-bg.jpg');
+}
+
+.play-rain {
+  background-image: url('./img/rain-bg.jpg');
+}
+
+.volume {
+  display: block;
+  width: 150px;
+  margin: 0 auto;
+}
