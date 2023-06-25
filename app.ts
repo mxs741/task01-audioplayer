@@ -1,38 +1,42 @@
-const btns = document.querySelectorAll('.btn') as NodeListOf<HTMLElement>
+const btns = document.querySelectorAll('.btn') as NodeListOf<HTMLButtonElement>
 const page = document.querySelector('.root') as HTMLElement
 let currentAudio: string = ''
 let audio: HTMLAudioElement = new Audio(currentAudio)
 let icon: HTMLImageElement
 let iconAddress: string
 
-btns.forEach(btn => {
-  btn.addEventListener('click', (evt: any) => {
-    audio.paused ?
-    (audio.play(), evt.currentTarget.children[0].src = `./icons/pause.svg`,
-      icon = evt.currentTarget.children[0],
-      iconAddress = `./icons/${evt.currentTarget.dataset.sound}.svg`) :
-    (audio.pause(), evt.currentTarget.children[0].src = `./icons/${evt.currentTarget.dataset.sound}.svg`)
+btns.forEach((btn: HTMLButtonElement) => {
+  btn.addEventListener('click', (evt: MouseEvent) => {
+    const target = evt.currentTarget as HTMLButtonElement
+    const img = target.children[0] as HTMLImageElement
+    if (target) {
+      audio.paused ?
+      (audio.play(), img.src = `./icons/pause.svg`,
+        icon = img,
+        iconAddress = `./icons/${target.dataset.sound}.svg`) :
+      (audio.pause(), img.src = `./icons/${target.dataset.sound}.svg`)
 
-    if (currentAudio !== `./sounds/${evt.currentTarget.dataset.sound}.mp3`) {
-      audio.pause()
-      icon.src = iconAddress
-      icon = evt.currentTarget.children[0]
-      iconAddress = `./icons/${evt.currentTarget.dataset.sound}.svg`
+      if (currentAudio !== `./sounds/${target.dataset.sound}.mp3`) {
+        audio.pause()
+        icon.src = iconAddress
+        icon = img
+        iconAddress = `./icons/${target.dataset.sound}.svg`
 
-      page.style.backgroundImage = `url('./img/${evt.currentTarget.dataset.sound}-bg.jpg')`
-      currentAudio = `./sounds/${evt.currentTarget.dataset.sound}.mp3`
+        page.style.backgroundImage = `url('./img/${target.dataset.sound}-bg.jpg')`
+        currentAudio = `./sounds/${target.dataset.sound}.mp3`
 
-      audio = new Audio(`./sounds/${evt.currentTarget.dataset.sound}.mp3`)
-      evt.currentTarget.children[0].src = `./icons/pause.svg`
-      audio.volume = changeVolume(audio)
-      audio.play()
+        audio = new Audio(`./sounds/${target.dataset.sound}.mp3`)
+        img.src = `./icons/pause.svg`
+        audio.volume = changeVolume(audio)
+        audio.play()
+      }
+      changeVolume(audio)
     }
-    changeVolume(audio)
   })
 })
 
 function changeVolume(audio: HTMLAudioElement): number {
-  const volume = document.querySelector('.volume') as HTMLInputElement
+  const volume: HTMLInputElement = document.querySelector('.volume') as HTMLInputElement
   volume.addEventListener('input', () => {
     audio.volume = parseFloat(volume.value)
   })
